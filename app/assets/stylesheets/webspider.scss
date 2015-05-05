@@ -1,3 +1,30 @@
 // Place all the styles related to the webspider controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.content{
+  display: block;
+  width: 800px;
+  margin: 200px auto;
+  h1{
+    display: inline-block;
+    width: 200px;
+    margin: 0 290px;
+  }
+  .name{
+    
+  }
+  .zinput{
+    position: relative;
+    width: 500px !important;
+    display: table;
+    float: left !important;
+    margin-left: 80px;
+    margin-right: 20px;
+  }
+  input.btn{
+    display:  inline-block;
+  }
+}

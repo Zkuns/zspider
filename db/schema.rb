@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504030836) do
+ActiveRecord::Schema.define(version: 20150504040905) do
+
+  create_table "decoders", force: :cascade do |t|
+  end
+
+  create_table "https", force: :cascade do |t|
+  end
 
   create_table "pages", force: :cascade do |t|
     t.string   "url"
     t.text     "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "spiders", force: :cascade do |t|
+  end
+
+  create_table "zqueues", force: :cascade do |t|
   end
 
 end

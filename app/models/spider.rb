@@ -3,8 +3,8 @@ class Spider < ActiveRecord::Base
     @url = url
     @deep = deep
     @http = Http.new
-    @decoder = Decoder.new
-    @queue = Queue.new
+    @decoder = Decoder.new url
+    @queue = Zqueue.new url
   end
 
   def run
@@ -22,7 +22,7 @@ class Spider < ActiveRecord::Base
   def crawl url
     file = @http.get url
     links = @decoder.parse(file)
-    Page.create(url: url.to_s, file: file)
+    Page.create(url: url.to_s, file: file.try(:read))
     links
   end
 

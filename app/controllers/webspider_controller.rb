@@ -5,7 +5,8 @@ class WebspiderController < ApplicationController
   end
 
   def search
-    spider = Spider.new params[:url]
-    spider.run
+    BSpider.perform_async(params[:url])
+    render :home
   end
+
 end

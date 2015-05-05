@@ -4,17 +4,18 @@ class Decoder < ActiveRecord::Base
   end
 
   def parse file
-    doc = Nokegiri::HTML(file)
+    doc = Nokogiri::HTML(file)
     links = doc.css('a').map do |a_tag|
       link = rebuild_url a_tag['href'].to_s
     end 
     links
   end
 
-  def rebuild url
+  def rebuild_url url
     if url.start_with? 'http'
       url
-    else url == "#" || url.start_with? 'java'
+    elsif (url == "#") || (url.start_with? 'java')
+    else
       @base_url + url
     end
   end
