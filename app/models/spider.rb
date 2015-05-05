@@ -4,25 +4,26 @@ class Spider < ActiveRecord::Base
     @deep = deep
     @http = Http.new
     @decoder = Decoder.new url
-    @queue = Zqueue.new url
+    @queue = Zqueue.new url, deep
   end
 
   def run
     loop do
       urls = @queue.shift(5)
-      urls.each do |url|
-        puts url
-        urls = crawl(url)
-        @queue.push(urls)
+      urls.each do |pair|
+        puts pair[0]
+        puts pair[1]
+        urls = crawl(pair)
+        @queue.push(urls, pair[1])
       end
       return if @queue.empty?
     end
   end
 
-  def crawl url
-    file = @http.get url
-    links = @decoder.parse(file)
-    Page.create(url: url.to_s, file: file.try(:read))
+  def crawl pair
+    file = @http.get pair[0]
+    links, body = @decoder.parse(file, pair[1])
+    Page.create(url: pair[0].to_s, file: body)
     links
   end
 

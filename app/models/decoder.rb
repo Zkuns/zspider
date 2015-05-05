@@ -3,12 +3,17 @@ class Decoder < ActiveRecord::Base
     @base_url = url
   end
 
-  def parse file
+  def parse file, deep
     doc = Nokogiri::HTML(file)
-    links = doc.css('a').map do |a_tag|
-      link = rebuild_url a_tag['href'].to_s
-    end 
-    links
+    body = doc.css('body')
+    if deep == 0
+      links = []
+    else
+      links = doc.css('a').map do |a_tag|
+        link = rebuild_url a_tag['href'].to_s
+      end 
+    end
+    [links, body]
   end
 
   def rebuild_url url

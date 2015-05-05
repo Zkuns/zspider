@@ -1,6 +1,6 @@
 class Zqueue < ActiveRecord::Base
-  def initialize url
-    @queue = [url]
+  def initialize url, deep
+    @queue = [[url, deep]]
     @history = [url]
     @base_url = url
   end
@@ -9,11 +9,11 @@ class Zqueue < ActiveRecord::Base
     @queue.shift(num)
   end
 
-  def push urls
+  def push urls, deep
     urls.each do |url|
       unless check url
         @history.push(url)
-        @queue.push(url)
+        @queue.push([url, deep-1])
       end
     end
   end

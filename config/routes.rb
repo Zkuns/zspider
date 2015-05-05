@@ -1,6 +1,9 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   root 'webspider#home'
   post 'search' => 'webspider#search'
+  get 'data_search' => 'webspider#data_search'
+  mount Sidekiq::Web => '/sidekiq'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

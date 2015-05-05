@@ -28,3 +28,38 @@
     display:  inline-block;
   }
 }
+.return{
+  margin: 20px 0 0 10px;
+}
+.data_content{
+  display: block;
+  width: 800px;
+  margin: 100px auto;
+  h1{
+    display: inline-block;
+    width: 200px;
+    margin: 0 290px;
+  }
+  .name{
+    width: 500px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .input-group{
+    width: 300px;
+  }
+  .zinput{
+    position: relative;
+    width: 300px;
+    display: table;
+    float: left;
+    margin-left: 80px;
+    margin-right: 20px;
+  }
+  input.btn{
+    display: inline-block;
+  }
+  .pages{
+    margin-top: 20px;
+  }
+}

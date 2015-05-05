@@ -1,0 +1,20 @@
+.return
+  a href=root_path class='btn btn-success'
+    |返回链接输入页面
+.data_content
+  h1
+    |data search
+  .name
+    = form_tag('data_search', method: :get)
+      .zinput
+        .input-group
+          input type='text' name='key' id='key' class='form-control' placeholder='key word' aria-describedby='sizing-addon1'
+      = submit_tag '提交', class: 'btn btn-primary'
+  .pages
+    -@pages.each do |page|
+      -unless page.url.blank?
+        .list-group
+          a href=page.url class='list-group-item'
+            h4.list-group-item-heading
+              =page.url
+            p.list-group-item-text
