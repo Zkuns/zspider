@@ -1,7 +1,7 @@
 class Zqueue < ActiveRecord::Base
   def initialize url, deep
     @queue = [[url, deep]]
-    @history = [url]
+    @history = [url,"http://211.71.233.103:83/"]
     @base_url = url
   end
 

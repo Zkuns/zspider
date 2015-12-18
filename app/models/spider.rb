@@ -12,7 +12,6 @@ class Spider < ActiveRecord::Base
       urls = @queue.shift(5)
       urls.each do |pair|
         puts pair[0]
-        puts pair[1]
         urls = crawl(pair)
         @queue.push(urls, pair[1])
       end

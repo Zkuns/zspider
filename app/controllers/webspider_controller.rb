@@ -1,7 +1,7 @@
 class WebspiderController < ApplicationController
 
   def home
-    
+
   end
 
   def search
